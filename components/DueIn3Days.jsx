@@ -49,25 +49,24 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
         {closeDueDateData.map((item) => (
           <div
             key={item.c_id}
-            className="p-4 mb-4 bg-gray-100 rounded-md shadow-md"
+            className="p-4 mb-4 bg-gray-100 rounded-md shadow-md hover:bg-gray-300"
           >
             <Link href={`/contract/${item.SEQ}`}>
               {" "}
-              <strong>เลขที่สัญญา: {item.contract_no}</strong>
+              <strong>เลขที่สัญญา: {item.contract_no}</strong>- ครบกำหนด{" "}
+              <strong className="font-semibold text-red-500">
+                {formatDate(item.due_date)}
+              </strong>
+              <br />
+              <p>
+                <strong>โครงการ : </strong>
+                {item.project_name}
+              </p>
+              <p>
+                <strong>จำนวนเงินในสัญญา (รวม VAT) :</strong>{" "}
+                {formatCurrency(item.amount_inc_vat)}
+              </p>
             </Link>
-            - ครบกำหนด{" "}
-            <strong className="font-semibold text-red-500">
-              {formatDate(item.due_date)}
-            </strong>
-            <br />
-            <p>
-              <strong>โครงการ : </strong>
-              {item.project_name}
-            </p>
-            <p>
-              <strong>จำนวนเงินในสัญญา (รวม VAT) :</strong>{" "}
-              {formatCurrency(item.amount_inc_vat)}
-            </p>
           </div>
         ))}
       </ul>
