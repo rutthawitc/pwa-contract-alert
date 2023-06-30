@@ -18,7 +18,7 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
     });
 
     setCloseDueDateData(filteredData);
-  }, []);
+  }, [jsonData]); // Include jsonData in the dependency array
   //console.log(closeDueDateData);
   const duedateCount = closeDueDateData.length;
 

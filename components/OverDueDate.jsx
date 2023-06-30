@@ -18,7 +18,7 @@ const OverDueDate = ({ jsonData }) => {
     });
 
     setOverDueDateData(filteredData);
-  }, []);
+  }, [jsonData]); // Include jsonData in the dependency array
   //console.log(overDueDateData);
 
   //---Count--

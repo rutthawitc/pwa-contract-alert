@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-function page() {
+function Page() {
   const router = useRouter();
   //Set up SWR to run the fetcher function when calling "/api/staticdata"
   //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
@@ -34,4 +34,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

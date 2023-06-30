@@ -18,7 +18,8 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
     });
 
     setCloseDueDateData(filteredData);
-  }, []);
+  }, [jsonData]); // Include jsonData in the dependency array
+
   //console.log(closeDueDateData.length);
   const duedateCount = closeDueDateData.length;
   //Thai Currency
