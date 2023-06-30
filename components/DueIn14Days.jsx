@@ -20,6 +20,8 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
     setCloseDueDateData(filteredData);
   }, []);
 
+  const duedateCount = closeDueDateData.length;
+
   //Thai Currency
   const formatCurrency = (value) => {
     return value.toLocaleString("th-TH", {
@@ -41,7 +43,8 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
   return (
     <div>
       <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-yellow-300 rounded-md shadow-xl">
-        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในระยะ 14 วัน
+        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในระยะ 14 วัน มีจำนวน{" "}
+        {duedateCount} โครงการ
       </h2>
       <ul>
         {closeDueDateData.map((item) => (

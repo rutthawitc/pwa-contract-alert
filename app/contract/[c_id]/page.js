@@ -2,11 +2,13 @@
 import useSWR from "swr";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function page({ params }) {
+  const router = useRouter();
   //Set up SWR to run the fetcher function when calling "/api/staticdata"
   //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
   const { data, error } = useSWR("/api/", fetcher);
@@ -48,13 +50,13 @@ function page({ params }) {
     <div className="py-10">
       <div className="flex justify-between px-2 py-5 text-gray-200 bg-white rounded-lg">
         <div>
-          <Link
-            href="/"
-            alt="back"
-            className="block p-6 text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          <button
+            className="block w-full p-2 font-semibold text-center text-gray-700 border border-gray-200 rounded-lg shadow bg-slate-200 hover:bg-gray-100"
+            type="button"
+            onClick={() => router.back()}
           >
             Back
-          </Link>
+          </button>
 
           <div className="pl-3 pr-3 mt-2 bg-gray-200 rounded-md shadow-md ">
             <h2 className="py-3 text-xl font-bold text-gray-700">
@@ -62,6 +64,9 @@ function page({ params }) {
             </h2>
             <p className="text-gray-700">
               <strong>โครงการ:</strong> {specificDataItem.project_name}
+            </p>
+            <p className="text-gray-700">
+              <strong>สาขา:</strong> {specificDataItem.branch}
             </p>
             <hr className="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700" />
             <p className="text-gray-700">
@@ -84,12 +89,10 @@ function page({ params }) {
               <strong>รับประกันงาน:</strong> {specificDataItem.guarantee}
             </p>
             <p className="text-gray-700">
-              <strong>ค้ำประกันสัญญา:</strong>{" "}
+              <strong>หลักประกันสัญญา:</strong>{" "}
               {specificDataItem.contract_collateral}
             </p>
-            <p className="text-gray-700">
-              <strong>สาขา:</strong> {specificDataItem.branch}
-            </p>
+
             <hr className="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700" />
             <p className="pb-5 text-gray-700">
               <strong>ครบกำหนด:</strong> {formatDate(specificDataItem.due_date)}

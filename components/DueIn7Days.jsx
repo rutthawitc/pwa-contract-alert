@@ -14,12 +14,13 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
       const timeDifference = dueDate.getTime() - currentDate.getTime();
       const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
 
-      return daysDifference <= 30 && daysDifference >= 15;
+      return daysDifference <= 7 && daysDifference >= 0;
     });
 
     setCloseDueDateData(filteredData);
   }, []);
-
+  //console.log(closeDueDateData.length);
+  const duedateCount = closeDueDateData.length;
   //Thai Currency
   const formatCurrency = (value) => {
     return value.toLocaleString("th-TH", {
@@ -40,8 +41,9 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
 
   return (
     <div>
-      <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-green-300 rounded-md shadow-xl">
-        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในระยะ 30 วัน
+      <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-orange-300 rounded-md shadow-xl">
+        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในระยะ 7 วัน มีจำนวน{" "}
+        {duedateCount} โครงการ
       </h2>
       <ul>
         {closeDueDateData.map((item) => (
@@ -52,7 +54,7 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
             <Link href={`/contract/${item.SEQ}`}>
               {" "}
               <strong>เลขที่สัญญา: {item.contract_no}</strong>
-            </Link>{" "}
+            </Link>
             - ครบกำหนด{" "}
             <strong className="font-semibold text-red-500">
               {formatDate(item.due_date)}

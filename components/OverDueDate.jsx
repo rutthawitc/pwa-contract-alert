@@ -2,24 +2,27 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const DisplayCloseDueDateData = ({ jsonData }) => {
-  const [closeDueDateData, setCloseDueDateData] = useState([]);
-
+const OverDueDate = ({ jsonData }) => {
+  const [overDueDateData, setOverDueDateData] = useState([]);
   useEffect(() => {
     const currentDate = new Date();
 
     // Filter the JSON data based on the condition
     const filteredData = jsonData.filter((item) => {
       const dueDate = new Date(item.due_date);
-      const timeDifference = dueDate.getTime() - currentDate.getTime();
-      const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+      //const timeDifference = dueDate.getTime() - currentDate.getTime();
+      //const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
 
-      return daysDifference <= 7 && daysDifference >= 0;
+      //return daysDifference <= 3 && daysDifference >= 0;
+      return dueDate < currentDate;
     });
 
-    setCloseDueDateData(filteredData);
+    setOverDueDateData(filteredData);
   }, []);
+  //console.log(overDueDateData);
 
+  //---Count--
+  const expiredCount = overDueDateData.length;
   //Thai Currency
   const formatCurrency = (value) => {
     return value.toLocaleString("th-TH", {
@@ -40,11 +43,12 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
 
   return (
     <div>
-      <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-orange-300 rounded-md shadow-xl">
-        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในระยะ 7 วัน
+      <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-red-200 rounded-md shadow-xl">
+        โครงการที่หมดระยะเวลาประกันผลงาน <br />
+        มีจำนวน {expiredCount} โครงการ
       </h2>
       <ul>
-        {closeDueDateData.map((item) => (
+        {overDueDateData.map((item) => (
           <div
             key={item.c_id}
             className="p-4 mb-4 bg-gray-100 rounded-md shadow-md"
@@ -73,4 +77,4 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
   );
 };
 
-export default DisplayCloseDueDateData;
+export default OverDueDate;
