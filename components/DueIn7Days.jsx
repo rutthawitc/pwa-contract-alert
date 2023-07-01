@@ -14,7 +14,7 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
       const timeDifference = dueDate.getTime() - currentDate.getTime();
       const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
 
-      return daysDifference <= 7 && daysDifference >= 0;
+      return daysDifference <= 7 && daysDifference >= 4;
     });
 
     setCloseDueDateData(filteredData);
