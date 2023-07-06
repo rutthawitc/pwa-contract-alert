@@ -7,6 +7,7 @@ import DueIn14days from "../components/DueIn14Days";
 import DueIn30days from "../components/DueIn30Days";
 import DueIn31to60Days from "../components/DueIn31to60Days";
 import Link from "next/link";
+import DisplayText from "./lang/list-text.json";
 
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -25,7 +26,7 @@ function Page() {
   return (
     <div className="container mx-auto mb-1">
       <h1 className="pt-3 pb-3 mt-3 mb-2 text-xl font-bold text-center bg-blue-400 rounded-md shadow-xl">
-        ระบบแจ้งเตือนระยะเวลาประกันผลงานของโครงการ กปภ.ข.๖
+        {DisplayText.main_title}
       </h1>
       <DueIn3Days jsonData={data} />
       <div>
