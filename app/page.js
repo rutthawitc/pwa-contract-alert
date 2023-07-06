@@ -50,9 +50,9 @@ function Page() {
         <Link
           href={"/contract/expired"}
           alt="Expired"
-          className="block w-full p-6 font-semibold text-center text-gray-700 border border-gray-200 rounded-lg shadow bg-slate-200 hover:bg-gray-100"
+          className="block w-full p-6 text-xl font-semibold text-center text-gray-700 border border-gray-200 rounded-lg shadow bg-slate-200 hover:bg-gray-100"
         >
-          โครงการที่หมดระยะประกัน
+          {DisplayText.listOverdue}
         </Link>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import DisplayText from "../app/lang/list-text.json";
 
 const OverDueDate = ({ jsonData }) => {
   const [overDueDateData, setOverDueDateData] = useState([]);
@@ -44,7 +45,7 @@ const OverDueDate = ({ jsonData }) => {
   return (
     <div>
       <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-red-200 rounded-md shadow-xl">
-        โครงการที่หมดระยะเวลาประกันผลงาน <br />
+        {DisplayText.listOverdue} <br />
         มีจำนวน {expiredCount} โครงการ
       </h2>
       <ul>

@@ -19,16 +19,29 @@ function Page() {
   if (!data) return <div>Loading...</div>;
   //console.log(data);
   return (
-    <div>
-      <button
-        className="block w-full p-2 mt-2 font-bold text-center text-gray-700 border border-gray-200 rounded-lg shadow-md bg-slate-200 hover:bg-gray-100"
-        type="button"
-        onClick={() => router.back()}
-      >
-        Back
-      </button>
+    <div className="flex flex-col justify-center">
+      <div className="mt-5">
+        <button
+          className="w-full p-4 font-bold text-center text-gray-700 border border-gray-200 rounded-lg shadow-md bg-slate-200 hover:bg-gray-100"
+          type="button"
+          onClick={() => router.back()}
+        >
+          Back
+        </button>
+      </div>
       <br />
-      <Expired jsonData={data} />
+      <div>
+        <Expired jsonData={data} className="w-auto" />
+      </div>
+      <div className="mt-2 mb-5">
+        <button
+          className="w-full p-4 font-bold text-center text-gray-700 border border-gray-200 rounded-lg shadow-md bg-slate-200 hover:bg-gray-100"
+          type="button"
+          onClick={() => router.back()}
+        >
+          Back
+        </button>
+      </div>
     </div>
   );
 }

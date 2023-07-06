@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import DisplayText from "../app/lang/list-text.json";
 
 const DisplayCloseDueDateData = ({ jsonData }) => {
   const [closeDueDateData, setCloseDueDateData] = useState([]);
@@ -42,8 +43,7 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
   return (
     <div>
       <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-red-300 rounded-md shadow-xl">
-        โครงการที่ใกล้ครบกำหนดระยะเวลาประกันผลงาน ในช่วงระยะ 3 วัน มีจำนวน{" "}
-        {duedateCount} โครงการ
+        {DisplayText.listHeader} ในช่วงระยะ 3 วัน มีจำนวน {duedateCount} โครงการ
       </h2>
       <ul>
         {closeDueDateData.map((item) => (

@@ -47,7 +47,7 @@ function Page({ params }) {
   };
 
   return (
-    <div className="py-10">
+    <div className="flex items-center justify-center flex-auto w-full py-2">
       <div className="flex justify-between px-2 py-5 text-gray-200 bg-white rounded-lg">
         <div>
           <button
