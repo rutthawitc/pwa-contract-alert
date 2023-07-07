@@ -43,6 +43,17 @@ const DisplayCloseDueDateData = ({ jsonData }) => {
 
   return (
     <div>
+      {/* {closeDueDateData.length > 0 ? (
+        <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-orange-300 rounded-md shadow-xl">
+          {DisplayText.listHeader} ในช่วงระยะ 4-7 วัน มีจำนวน {duedateCount}{" "}
+          โครงการ
+        </h2>
+      ) : (
+        <hr />
+        // <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-orange-300 rounded-md shadow-xl">
+        //   ไม่มีโครงการ
+        // </h2>
+      )} */}
       <h2 className="pt-2 pb-2 mb-2 text-xl font-bold text-center bg-orange-300 rounded-md shadow-xl">
         {DisplayText.listHeader} ในช่วงระยะ 4-7 วัน มีจำนวน {duedateCount}{" "}
         โครงการ
